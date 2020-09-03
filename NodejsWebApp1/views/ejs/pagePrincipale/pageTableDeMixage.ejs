@@ -1,0 +1,314 @@
+<%- include('head.ejs') %>
+
+<link rel="stylesheet" href="/css/styleGlobal.css">
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-light py-0 bg-light navbar-expand-sm py-md-0 ">
+    <button class="navbar-toggler mt-1" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item py-0"><a href="/presentation" class="nav-link active ">Table de mixage</a></li>
+        <li class="nav-item py-0"><a href="/scene" class="nav-link ">Scènes</a></li>
+        <li class="nav-item py-0"><a href="/melangeur" class="nav-link ">Espace de couleurs </a></li>
+        <li class="nav-item py-0"><a href="/jeux" class="nav-link ">Saturation</a></li>
+
+
+      </ul>
+      <ul class="nav justify-content-center">
+        <label class="switch">
+          <input onchange="changerbackground()" id="backgroundChange" type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <div class="form-inline my-2 my-lg-0">
+          <div id="choixCaisson">
+            <select class="form-control" v-model="selected" onchange=changeCaisson()>
+              <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text + " "+ option.value }}
+              </option>
+            </select>
+          </div>
+
+          <li class="nav-item py-0"><button id="help" onclick="information()">Help</button>
+
+        </div>
+      </ul>
+  </nav>
+  <!--/Navbar-->
+  <!-- Loader du début de page-->
+  <div id="loader">
+    <div class="circle"></div>
+  </div>
+  <!-- fin du loader-->
+
+  <div id="Total">
+    <div class="chart-container">
+      <canvas id="myChart" style="height:450px; width:450px">
+      </canvas>
+    </div>
+    <div id="toutCurseur">
+      <div id="curseurBlanc">
+        <table style="width:20%;margin-top:10%">
+          <tr>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc1" type="range" id="id_2700K-IRC=98" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc2" type="range" id="id_3000K-IRC=83" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc3" type="range" id="id_3000K-IRC=98" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc4" type="range" id="id_4000K-IRC=82" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc5" type="range" id="id_4000K-IRC=97" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc6" type="range" id="id_5000K-IRC=99" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc7" type="range" id="id_5600K-IRC=83" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseurBlanc8" type="range" id="id_6500K-IRC=97" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="curseurCouleur">
+        <table style="width:20%;margin-top:10%">
+          <tr>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur1" type="range" id="id_nm_390" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur2" type="range" id="id_nm_403" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur3" type="range" id="id_nm_405" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur4" type="range" id="id_nm_410" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur5" type="range" id="id_nm_425" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur6" type="range" id="id_nm_440" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur7" type="range" id="id_nm_450" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur8" type="range" id="id_nm_470" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur9" type="range" id="id_nm_480" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur10" type="range" id="id_nm_490" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur11" type="range" id="id_nm_502" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur12" type="range" id="id_nm_512" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur13" type="range" id="id_nm_520" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur14" type="range" id="id_nm_530" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur15" type="range" id="id_nm_544-lime" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur16" type="range" id="id_nm_590" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur17" type="range" id="id_nm_605" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur18" type="range" id="id_nm_620" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur19" type="range" id="id_nm_629-pc" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur20" type="range" id="id_nm_630" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur21" type="range" id="id_nm_655" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur22" type="range" id="id_nm_660" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td width="20">
+              <div class=" wrapper rotate">
+                <input class="curseur23" type="range" id="id_nm_680" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+            <td>
+              <div class=" wrapper rotate">
+                <input class="curseur24" type="range" id="id_nm_730" min="0" max="100" value="0" step="1"
+                  oninput="setTrame()">
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+      <button id="fleche">Cliquez pour les blancs</button>
+    </div>
+  </div>
+  <%- include('../page_information/TableDeMixageInformation.ejs') %>
+
+  
+<div id="rotationInterdit">
+  <p>La page n'est pas adapté pour le mode portrait. Remettez-vous en mode paysage.
+  </p>
+</div>
+
+</body>
+<script src="/js/ScriptDesPages/nav.js"></script>
+<script type="text/javascript" src="/js/ScriptDesPages/ScirptChart.js"></script>
+<script>
+  ////////Modification du DOM//////////
+
+  /////////Variables/////////////////
+  const buttons = document.getElementById("fleche");
+  var curseurCouleur = true;
+  ///////Modification du bouton pour changer les curseurs et le texte////////
+
+  //Permet de modifier l texte du bouton sur cliquez//
+  function modifyText() {
+    //condition qui permet de changer le texte selon le texte du bouton 
+    if (buttons.innerText === "Cliquez pour les blancs") {
+      buttons.innerText = "Cliquez pour les couleurs";
+      document.getElementById("curseurBlanc").style.display = 'block'; //permet d'afficher la div des curseurs blancs
+      document.getElementById('curseurCouleur').style.display ="none";
+    } else {
+      buttons.innerText = "Cliquez pour les blancs";
+      document.getElementById("curseurBlanc").style.display = 'none'; // permet de cacher la div des curseurs de blancs
+      document.getElementById('curseurCouleur').style.display = 'block'; //permet d'afficher la div des curseurs couleurs
+    }
+  }
+  //Permet de modifier l'affichage du bouton sur cliquez//
+  
+  //Permet d'ajouter les fonctions de la modification du bouton pour changer de curseur si l'event est un click sur le bouton
+  buttons.addEventListener('click', function (e) {
+    modifyText();
+    let x = e.clientX - e.target.offsetLeft; //permet de prend la position de la souris horizontal puis soustrait de la position de décalga de l'élément parent
+    let y = e.clientY - e.target.offsetLeft; //permet de prend la position de la souris vertical puis soustrait de la position de décalga de l'élément parent
+    let ripples = document.createElement('span'); //crée un span pour faire l'animation 
+    ripples.setAttribute('id', 'span2'); //ajoute l'id span2
+    ripples.style.left = x + 'px'; //  permet de décalé à droite par rapport à la variable x
+    ripples.style.top = y + 'px'; //permet de décalé sur l haut par rapport à la vairable y
+    this.appendChild(ripples); //ajoute le span dans la div du bouton 
+    setTimeout(() => { //permet de supprimer le span pour ne pas envahir la div et n'en n'afficher qu'un seul.
+      ripples.remove();
+    }, 1000);
+  })
+
+ 
+</script>
+
+</html>

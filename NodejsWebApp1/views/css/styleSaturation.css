@@ -1,0 +1,294 @@
+#containerJeux {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+}
+
+#couleurMélange {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 50px;
+}
+
+#containerCurseurs {
+  width: 100%;
+  display: flex;
+  margin-top: 0.5%;
+}
+
+#containersCouleurs {
+  width: 100%;
+}
+
+#border {
+  border: 3px solid white;
+}
+
+#curseurBlancJeux {
+  margin-top: 15px;
+}
+
+#curseurCouleur {
+  margin-top: 15px;
+}
+
+#containersChoixcouleur {
+  display: flex;
+  height: 90px;
+}
+
+#containers {
+  display: flex;
+  margin-left: 10%;
+}
+
+.boutonCouleur {
+  margin-top: 1%;
+  margin-left: 2%;
+  border-radius: 10px;
+  width: auto;
+  border: none;
+  outline: none !important;
+  height: fit-content;
+}
+
+input {
+  margin-bottom: 0px !important;
+  transform: rotate(-90deg);
+  margin-top: 50% !important;
+
+}
+
+#boutonCouleur {
+  display: flex;
+  flex-flow: wrap;
+  width: 60%;
+  margin-left: auto;
+}
+
+#containersBlanc {
+  height: 35%;
+  width: 100%;
+}
+
+.flecheCouleur {
+  width: fit-content;
+  margin-left: 2%;
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 34px;
+  width: 15%;
+  height: fit-content;
+  letter-spacing: 1.15px;
+  color: black;
+  border: none;
+  outline: none;
+  background-color: white;
+}
+
+#carreCouleursMelange {
+  border-radius: 100px;
+}
+
+#valeurCurseur1 {
+  margin-left: 40%;
+  color: white;
+  font-size: 30px;
+}
+
+#valeurCurseur2 {
+  margin-left: 40%;
+  color: white;
+  font-size: 30px;
+}
+
+p {
+  margin-bottom: 0;
+  margin-top: 0;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+#Blanc_p {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 20px;
+}
+
+#containersChoixBlanc {
+  display: flex;
+  padding-bottom: 3px;
+  height: 90px;
+}
+
+#Blanc {
+  flex-flow: wrap;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: auto;
+}
+
+/* ////////switch de couleurs ////////*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute !important;
+  cursor: pointer !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin-top: 15%;
+  margin-bottom: auto;
+  bottom: 0 !important;
+  background-color: rgba(5, 0, 0, 0.71) !important;
+  -webkit-transition: .4s !important;
+  transition: .4s !important;
+}
+
+.slider:before {
+  position: absolute !important;
+  content: "" !important;
+  height: 26px !important;
+  width: 26px !important;
+  left: 4px !important;
+  background-color: white;
+  -webkit-transition: .4s !important;
+  transition: .4s !important;
+}
+
+input:checked+.slider {
+  background-color: #4B1D8F !important;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #4B1D8F !important;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px) !important;
+  -ms-transform: translateX(26px) !important;
+  transform: translateX(26px) !important;
+}
+
+/* ////////Rounded sliders//////// */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ////////Page information//////// */
+#information {
+  display: flex;
+  flex-direction: column;
+}
+
+#titreInfo {
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+}
+
+#etapeUtilisation {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#etapeUtilisation p {
+  text-align: start !important;
+  font-size: 15px;
+}
+
+ol {
+  color: white;
+  font-size: 25px;
+}
+
+ol li {
+  margin-bottom: 5px;
+}
+
+#buttonJaiCompris {
+  width: 150px;
+  height: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 34px;
+  background-color: #6BCDFD;
+  border: #6BCDFD 2px solid;
+  color: white;
+}
+
+#buttonJaiCompris:hover {
+  background-color: #699CFC;
+  border: #699CFC 2px solid;
+
+}
+
+/* //////// loader////////// */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#loader {
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.circle {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(45deg, transparent, transparent, yellow); */
+  border-top: 5px solid rgb(66, 168, 236);
+  animation: animate 1s linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+
+  100% {}
+}
+
+#divInput {
+  margin-left: 10px;
+}

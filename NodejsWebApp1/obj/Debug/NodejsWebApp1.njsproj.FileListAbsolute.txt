@@ -1,0 +1,5 @@
+D:\Repos\DMX\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsprojAssemblyReference.cache
+D:\Repos\DMX\NodejsWebApp1\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Koïnzell\Desktop\ProjetServerGit\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsprojAssemblyReference.cache
+C:\Users\Koïnzell\Desktop\ProjetServerGit\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsproj.CoreCompileInputs.cache
+C:\Users\Koïnzell\Desktop\ProjetServerGit\NodejsWebApp1\bin\Microsoft.NodejsTools.WebRole.dll
